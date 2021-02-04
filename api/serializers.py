@@ -3,6 +3,14 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
 from .models import Post, Comment
 
+class LoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'password'
+        )
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -28,6 +36,7 @@ class CommentsSerializer(serializers.ModelSerializer):
         model = Comment
         fields = (
             'id',
+            'post_id',
             'body',
             'author'
         )

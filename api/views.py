@@ -1,4 +1,4 @@
-from .serializers import UserSerializer, PostSerializer, CommentsSerializer
+from .serializers import *
 from django.contrib.auth.models import User
 from rest_framework import generics, filters
 from .models import Post, Comment
@@ -8,6 +8,12 @@ from rest_framework.filters import SearchFilter
 class UserCreateView(generics.ListCreateAPIView):
   queryset = User.objects.all()
   serializer_class = UserSerializer
+
+class LoginView(generics.ListCreateAPIView):
+  search_fields = ['email', 'password']
+  filter_backends = (filters.SearchFilter, )
+  queryset = User.objects.all()
+  serializer_class = LoginSerializer
 
 # 유저 조회
 class UserView(generics.ListAPIView):
@@ -30,6 +36,8 @@ class PostWriteView(generics.ListCreateAPIView):
 
 # 코멘트 조회
 class CommentsView(generics.ListAPIView):
+  search_fields = ['post_id']
+  filter_backends = (filters.SearchFilter, )
   queryset = Comment.objects.all()
   serializer_class = CommentsSerializer
 
