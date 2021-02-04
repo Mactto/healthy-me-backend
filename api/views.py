@@ -10,7 +10,7 @@ class UserCreateView(generics.ListCreateAPIView):
   serializer_class = UserSerializer
 
 # 로그인
-class LoginView(generics.ListAPIView):
+class LoginView(generics.RetrieveAPIView):
   search_fields = ['email', 'password']
   filter_backends = (filters.SearchFilter, )
   queryset = User.objects.all()
