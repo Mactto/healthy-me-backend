@@ -23,6 +23,10 @@ class UserView(generics.ListAPIView):
   queryset = User.objects.all()
   serializer_class = UserSerializer
 
+# 유저 삭제
+class UserDeleteView(generics.DestroyAPIView):
+  queryset = Post.objects.all()
+  serializers_class = Post
 
 # 게시글 가져오기
 class PostView(generics.ListAPIView):
@@ -54,7 +58,7 @@ class CommentsWriteView(generics.ListCreateAPIView):
   serializer_class = CommentsSerializer
 
   
-# 게시글 삭제
+# 코멘트 삭제
 class CommentsDeleteView(generics.DestroyAPIView):
   queryset = Comment.objects.all()
   serializers_class = Comment
