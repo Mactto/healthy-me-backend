@@ -14,7 +14,7 @@ class LoginView(generics.ListAPIView):
   search_fields = ['email', 'password']
   filter_backends = (filters.SearchFilter, )
   queryset = User.objects.all()
-  serializer_class = LoginSerializer
+  serializer_class = UserSerializer
 
 # 유저 조회
 class UserView(generics.ListAPIView):
