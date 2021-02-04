@@ -11,12 +11,13 @@ class UserCreateView(generics.ListCreateAPIView):
 
 # 로그인
 class LoginView(generics.ListAPIView):
+  queryset = User.objects.all()
   serializer_class = UserSerializer
 
   def get_queryset(self):
     qs = super().get_queryset()
-
-    return qs.filter(email=self.request.email, password=self.request.password)
+    return qs.filter(email=self.request.GET['email'], password=self.request.GET['password'])
+    
 
 # 유저 조회
 class UserView(generics.ListAPIView):
