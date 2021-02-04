@@ -11,7 +11,6 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    post = models.ForeignKey("Post", related_name="post", on_delete=models.CASCADE, db_column="post")
     body = models.TextField()
     author = models.CharField(max_length=30)
 
