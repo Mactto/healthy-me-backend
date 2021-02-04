@@ -4,8 +4,8 @@ from .views import *
 app_name = 'api'
 urlpatterns = [
     path('', UserView.as_view(), name='user'),
-    path('login', LoginView.as_view(), name='login'),
-    path('register', UserView.as_view(), name="register"),
+    path('login', LoginView, name='login'),
+    path('register', UserCreateView.as_view(), name="register"),
     path('<int:pk>/deleteuser', UserDeleteView.as_view(), name='user_delete'),
 
     path('post', PostView.as_view(), name="post"),
