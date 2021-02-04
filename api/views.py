@@ -9,7 +9,8 @@ class UserCreateView(generics.ListCreateAPIView):
   queryset = User.objects.all()
   serializer_class = UserSerializer
 
-class LoginView(generics.ListCreateAPIView):
+# 로그인
+class LoginView(generics.ListAPIView):
   search_fields = ['email', 'password']
   filter_backends = (filters.SearchFilter, )
   queryset = User.objects.all()
@@ -26,6 +27,7 @@ class UserView(generics.ListAPIView):
 # 게시글 가져오기
 class PostView(generics.ListAPIView):
   search_fields = ['id', 'title', 'body', 'author']
+  filter_backends = (filters.SearchFilter, )
   queryset = Post.objects.all()
   serializer_class = PostSerializer
 
@@ -33,6 +35,11 @@ class PostView(generics.ListAPIView):
 class PostWriteView(generics.ListCreateAPIView):
   queryset = Post.objects.all()
   serializer_class = PostSerializer
+
+# 게시글 삭제
+class PostDeleteView(generics.DestroyAPIView):
+  queryset = Post.objects.all()
+  serializers_class = Post
 
 # 코멘트 조회
 class CommentsView(generics.ListAPIView):
@@ -45,3 +52,9 @@ class CommentsView(generics.ListAPIView):
 class CommentsWriteView(generics.ListCreateAPIView):
   queryset = Comment.objects.all()
   serializer_class = CommentsSerializer
+
+  
+# 게시글 삭제
+class CommentsDeleteView(generics.DestroyAPIView):
+  queryset = Comment.objects.all()
+  serializers_class = Comment
