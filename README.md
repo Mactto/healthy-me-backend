@@ -28,3 +28,6 @@ Back-End
 ### * 🔔 Technology Stack
 Front-End : Flutter  
 Back-End : Django
+
+* Heroku 배포
+* Rest API 제공
