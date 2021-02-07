@@ -2,6 +2,9 @@
 
 ## DSC KR Solution Challenge 해커톤 🚩  
 
+## 🎺 수상 🎺
+![image](https://user-images.githubusercontent.com/64149514/107139297-7e7e1800-695d-11eb-9b21-631501207176.png)
+
 ---
 
 ### * 🔍 Service Information
